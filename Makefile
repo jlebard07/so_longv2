@@ -24,7 +24,7 @@ OBJ = $(SRC:%.c=%.o)
 
 all: $(NAME)
 
-$(NAME): libft mlx $(OBJ)
+$(NAME): $(OBJ) libft mlx
 	$(CC) $(CFLAGS) $(OBJ) libft.a libmlx.a $(MLXFLAGS) -o $(NAME)
 
 mlx:
@@ -37,13 +37,12 @@ libft:
 
 clean:
 	rm -f $(OBJ)
-	rm -f *.a
 	$(MAKE) clean -sC ./minilibx-linux/
-	rm -f libft/libft.a
 	$(MAKE) clean -sC ./libft/
 
 fclean: clean
 	rm -f $(NAME)
+	find . -name "*.a" | xargs rm -f
 
 re: fclean all
 
