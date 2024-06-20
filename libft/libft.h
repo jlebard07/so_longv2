@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jlebard <jlebard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 12:15:41 by jlebard           #+#    #+#             */
-/*   Updated: 2024/06/14 18:33:04 by marvin           ###   ########.fr       */
+/*   Updated: 2024/06/20 14:10:50 by jlebard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,5 @@ int		ft_if_hexa_up(unsigned int n);
 int		ft_if_ptr(void *ptr);
 int		ft_if_string(char *s);
 int		ft_if_unsigned(unsigned int n);
-
-
-
 
 #endif

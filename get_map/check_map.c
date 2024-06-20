@@ -6,7 +6,7 @@
 /*   By: jlebard <jlebard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 14:18:33 by jlebard           #+#    #+#             */
-/*   Updated: 2024/06/19 10:48:12 by jlebard          ###   ########.fr       */
+/*   Updated: 2024/06/20 14:28:11 by jlebard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ bool	check_wall(char **map)
 
 bool	is_rectangle(char **map)
 {
-	int 	i;
-	size_t 	j;
+	int		i;
+	size_t	j;
 	size_t	k;
 
 	i = 0;
@@ -59,7 +59,7 @@ bool	is_rectangle(char **map)
 	return (1);
 }
 
-static int count_chara(char **map, char c)
+static int	count_chara(char **map, char c)
 {
 	int	i;
 	int	j;
@@ -68,13 +68,13 @@ static int count_chara(char **map, char c)
 	i = 0;
 	j = 0;
 	count = 0;
-	while (map[i])	
+	while (map[i])
 	{
 		while (map[i][j])
 		{
-		if (map[i][j] == c)
-			count++;
-		j++;
+			if (map[i][j] == c)
+				count++;
+			j++;
 		}
 		j = 0;
 		i++;
@@ -91,12 +91,12 @@ bool	check_chara(char **map)
 	j = 0;
 	while (map[i])
 	{
-		while(map[i][j])
+		while (map[i][j])
 		{
-		if (map[i][j] != '0' && map[i][j] != '1' \
-		&& map[i][j] != 'C' && map[i][j] != 'E' \
-		&& map[i][j] != 'P')
-			return (0);
+			if (map[i][j] != '0' && map[i][j] != '1' \
+			&& map[i][j] != 'C' && map[i][j] != 'E' \
+			&& map[i][j] != 'P')
+				return (0);
 		j++;
 		}
 		j = 0;

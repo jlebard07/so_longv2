@@ -38,13 +38,7 @@ void	free_bool_tab(bool **bool_tab)
 	free(bool_tab);
 }
 
-void	map_error(char **map)
-{
-	free_tab(map);
-	ft_putstr_fd("Erreur dans le format de la carte", 2);
-}
-
-static char *get_buffer(char *map_path)
+static char	*get_buffer(char *map_path)
 {
 	int		fd;
 	char	*buffer;
@@ -54,10 +48,7 @@ static char *get_buffer(char *map_path)
 	buffer = NULL;
 	fd = open(map_path, O_RDONLY);
 	if (fd == -1)
-	{	
-		perror("Erreur lors de l'ouverture du fichier\n");
 		return (NULL);
-	}
 	line = get_next_line(fd);
 	while (line != NULL)
 	{
@@ -76,16 +67,30 @@ static char *get_buffer(char *map_path)
 	return (buffer);
 }
 
+void	free_map(char **map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i])
+		free(map[i++]);
+	free(map);
+}
+
 char	**parse_and_check(char *map_path)
 {
 	char	**map;
 	int		i;
 	char	*buffer;
-	
+
 	i = 0;
 	buffer = get_buffer(map_path);
-	if (buffer == NULL)
+	if (buffer == NULL || buffer[0] == '\0')
+	{
+		ft_putstr_fd("Error :\nErreur lors de l'ouverture du fichier \
+		/ map vide\n", 2);
 		exit (1);
+	}
 	map = ft_split(buffer, '\n');
 	free(buffer);
 	while (map[i])
@@ -93,8 +98,9 @@ char	**parse_and_check(char *map_path)
 	if (i < 3 || check_chara(map) == 0 || check_wall(map) == 0 \
 	|| is_rectangle(map) == 0)
 	{
-		map_error(map);
-		return (NULL);
+		free_map(map);
+		ft_putstr_fd("Error :\nMauvais format", 2);
+		exit (1);
 	}
 	return (map);
 }

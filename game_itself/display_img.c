@@ -15,13 +15,9 @@
 static void	display_image(t_mlx_data *mlx_data, t_image *img,
 							int x, int y)
 {
-	mlx_put_image_to_window(
-		mlx_data->mlx_ptr,
-		mlx_data->window,
-		img->ptr,
-		x * img->width,
-		y * img->height
-		);
+	mlx_put_image_to_window(mlx_data->mlx_ptr,
+		mlx_data->window, img->ptr, x * img->width,
+		y * img->height);
 }
 
 static void	display_components(t_mlx_data *mlx_data)
@@ -33,7 +29,7 @@ static void	display_components(t_mlx_data *mlx_data)
 	j = 0;
 	while (mlx_data->map[i])
 	{
-		while(mlx_data->map[i][j])
+		while (mlx_data->map[i][j])
 		{
 			if (mlx_data->map[i][j] == '1')
 				display_image(mlx_data, &(mlx_data->wall), j, i);
@@ -65,7 +61,6 @@ int	key_press(int keysim, t_mlx_data *mlx_data)
 	if (keysim == XK_s)
 		move_down(mlx_data, mlx_data->pos_x, mlx_data->pos_y);
 	return (0);
-
 }
 
 int	affichage(t_mlx_data *mlx_data)

@@ -39,6 +39,7 @@ clean:
 	rm -f $(OBJ)
 	rm -f *.a
 	$(MAKE) clean -sC ./minilibx-linux/
+	rm -f libft/libft.a
 	$(MAKE) clean -sC ./libft/
 
 fclean: clean
